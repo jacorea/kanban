@@ -49,13 +49,12 @@ function updateSavedColumns() {
 
 // Create DOM Elements for each list item
 function createItemEl(columnEl, column, item, index) {
-  console.log('columnEl:', columnEl);
-  console.log('column:', column);
-  console.log('item:', item);
-  console.log('index:', index);
   // List Item
   const listEl = document.createElement('li');
   listEl.classList.add('drag-item');
+  listEl.textContent = item;
+  //append
+  columnEl.appendChild(listEl);
 
 }
 
@@ -78,8 +77,16 @@ function updateDOM() {
   });
 
   // Complete Column
+  completeList.textContent = '';
+  completeListArray.forEach((completeItem, index) => {
+    createItemEl(completeList, 0, completeItem, index);
+  });
 
   // On Hold Column
+  onHoldList.textContent = '';
+  onHoldListArray.forEach((onHoldItem, index) => {
+    createItemEl(onHoldList, 0, onHoldItem, index);
+  });
 
   // Run getSavedColumns only once, Update Local Storage 
   
